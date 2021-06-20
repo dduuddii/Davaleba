@@ -1,0 +1,33 @@
+create database Davaleba
+go
+use Davaleba
+go
+
+create table Teachers(
+	TeacherID int primary key identity(1,1),
+	FirstName nvarchar(20) not null,
+	LastName nvarchar(30) not null,
+	Sex char(1) null,
+	Subj nvarchar(100) not null
+)
+
+create table Pupils (
+	PupilID int primary key identity(1,1),
+	FirstName nvarchar(20) not null,
+	LastName nvarchar(30) not null,
+	Sex char(1) null,
+	Class int not null
+)
+
+create table Lessons (
+	LessonID int primary key identity(1,1),
+	TeacherID int not null,
+	PupilID int not null,
+	foreign key (TeacherID) references Teachers(TeacherID),
+	foreign key (PupilID) references Pupils(PupilID)
+)
+
+select Lessons.LessonID, Teachers.FirstName, Pupils.FirstName
+from Lessons
+inner join Teachers on Lessons.TeacherID=Teachers.TeacherID
+inner join Pupils on Lessons.PupilID=Pupils.PupilID where Pupils.FirstName = 'გიორგი';
