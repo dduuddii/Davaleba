@@ -30,4 +30,4 @@ create table Lessons (
 select Lessons.LessonID, Teachers.FirstName, Pupils.FirstName
 from Lessons
 inner join Teachers on Lessons.TeacherID=Teachers.TeacherID
-inner join Pupils on Lessons.PupilID=Pupils.PupilID where Pupils.FirstName = 'გიორგი';
+inner join Pupils on Lessons.PupilID=Pupils.PupilID where Pupils.FirstName = N'გიორგი';
